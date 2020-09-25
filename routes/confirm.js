@@ -5,6 +5,7 @@ let fs = require('fs');
 let path = require('path');
 let bcrypt = require('bcrypt');
 let valid = require('../config/validation');
+let { validationResult } = require('express-validator');
 route.post('/confirm', [valid.log_validation], function (req, res) {
     let vr = validationResult(req);
     if (!vr.isEmpty()) res.send(vr.errors[0]); else
