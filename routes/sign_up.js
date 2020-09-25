@@ -4,7 +4,6 @@ let validation = require('../config/validation');
 let bcrypt = require('bcrypt');
 let user = require('../models/user');
 let send = require('../config/SendEmail');
-let randomString = require('randomstring');
 let random = require('random');
 route.post('/registration', validation.reg_validation, function (req, res) {
     console.log();
