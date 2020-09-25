@@ -4,9 +4,10 @@ let jwt = require('jsonwebtoken');
 let fs = require('fs');
 let path = require('path');
 let bcrypt = require('bcrypt');
-
-route.post('/confirm', function (req, res) {
-
+let valid = require('../config/validation')''
+route.post('/confirm', [valid.log_validation], function (req, res) {
+    let vr = validationResult(req);
+    if (!vr.isEmpty()) res.send(vr.errors[0]); else
     user.findOne({ email: req.body.email }, function (err, result) {
         if (result) {
             if (bcrypt.compareSync(req.body.password, result.password)) {
