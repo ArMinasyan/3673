@@ -21,7 +21,7 @@ route.post('/confirm', function (req, res) {
                         // });
 
                         res.json({ 'token': token })
-                    } else res.json({ 'msg': "Invalid token" });
+                    } else res.json({ 'msg': "Invalid code" });
                 })
             } else res.json({ 'msg': "Invalid username and/or password" })
 

@@ -5,13 +5,16 @@ let bcrypt = require('bcrypt');
 let user = require('../models/user');
 let send = require('../config/SendEmail');
 let randomString = require('randomstring');
+let random = require('random');
 route.post('/registration', validation.reg_validation, function (req, res) {
+    console.log();
+
     let valid = validationResult(req);
     if (!valid.isEmpty()) res.send(valid.errors[0]);
     else {
         user.findOne({ email: req.body.email }, function (err, result) {
             if (result) res.json({ "msg": "Username already exist" }); else {
-                let token = randomString.generate()
+                let token = random.int(100000, 999999).toString();
                 let User = new user({
                     email: req.body.email,
                     password: bcrypt.hashSync(req.body.password, 10),
