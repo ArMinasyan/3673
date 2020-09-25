@@ -34,10 +34,11 @@ async function Start() {
     });
 
     let sign_in = require('./routes/sign_in'),
+        facebook = require('./routes/social_login'),
         sign_up = require('./routes/sign_up'),
         confirm = require('./routes/confirm');
 
-    app.use('/api', [sign_in, sign_up, confirm]);
+    app.use('/api', [sign_in, facebook, sign_up, confirm]);
 
     app.listen(process.env.PORT || 8000, function () {
         console.log('Start...');
