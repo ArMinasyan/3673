@@ -4,7 +4,7 @@ let registration = require('../controllers/registartion');
 let confirm = require('../controllers/confirmEmail');
 
 
-route.post('/registration', validation.reg_validation, registration);
-route.post('/confirm', validation.log_validation, confirm);
+route.post('/auth/registration', validation.reg_validation, registration);
+route.post('/auth/confirm', validation.log_validation, confirm);
 
 module.exports = route;
