@@ -14,4 +14,12 @@ let log_validation = [
     body('password').trim().not().isEmpty().withMessage('Password field is required'),
 ]
 
-module.exports = { reg_validation, log_validation };
+
+let change_password = [
+    body('new_password').trim().not().isEmpty().withMessage('New password field is required'),
+    body('confirm_new_password').trim().not().isEmpty().withMessage('Confirm new password field is required').custom((val, { req }) => {
+        if (val != req.body.new_password) throw new Error('Password confirmation does not match password');
+        else return true
+    })
+]
+module.exports = { reg_validation, log_validation, change_password };
