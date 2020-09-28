@@ -10,7 +10,6 @@ module.exports = (req, res) => {
         user.findOne({ email: req.body.email }, function (err, result) {
             if (result) {
                 bcrypt.compare(req.body.password, result.password, function (err, same) {
-                    console.log(same);
                     if (!err && same) {
                         if (result.token == '-') {
                             let token = createToken({ id: result._id, time: Date.now() });

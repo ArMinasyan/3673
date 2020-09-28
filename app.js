@@ -33,11 +33,6 @@ async function Start() {
             useUnifiedTopology: true,
         });
 
-    // await mongoose.connect('mongodb://localhost:27017/3673', {
-    //     useNewUrlParser: true,
-    //     useUnifiedTopology: true,
-    // });
-
     let Email_Social_SignIn = require('./routes/Email_Social_SignIn'),
         SignUp_Confirmation = require('./routes/SignUp_Confirmation');
 
