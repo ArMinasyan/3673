@@ -33,12 +33,10 @@ async function Start() {
         useUnifiedTopology: true,
     });
 
-    let sign_in = require('./routes/sign_in'),
-        facebook = require('./routes/social_login'),
-        sign_up = require('./routes/sign_up'),
-        confirm = require('./routes/confirm');
+    let Email_Social_SignIn = require('./routes/Email_Social_SignIn'),
+        SignUp_Confirmation = require('./routes/SignUp_Confirmation');
 
-    app.use('/api', [sign_in, facebook, sign_up, confirm]);
+    app.use('/api', [Email_Social_SignIn, SignUp_Confirmation]);
 
     app.listen(process.env.PORT || 8000, function () {
         console.log('Start...');

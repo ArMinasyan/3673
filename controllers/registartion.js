@@ -1,13 +1,11 @@
-let route = require('express').Router();
-let { validationResult } = require('express-validator');
-let validation = require('../config/validation');
 let bcrypt = require('bcrypt');
 let user = require('../models/user');
 let send = require('../config/SendEmail');
 let random = require('random');
-route.post('/registration', validation.reg_validation, function (req, res) {
-    console.log();
+let { validationResult } = require('express-validator');
 
+
+module.exports = (req, res) => {
     let valid = validationResult(req);
     if (!valid.isEmpty()) res.send(valid.errors[0]);
     else {
@@ -32,6 +30,4 @@ route.post('/registration', validation.reg_validation, function (req, res) {
 
         })
     }
-})
-
-module.exports = route;
+}

@@ -12,7 +12,6 @@ let reg_validation = [
 let log_validation = [
     body('email').trim().not().isEmpty().withMessage('Email field is required').isEmail().withMessage('Enter valid email address'),
     body('password').trim().not().isEmpty().withMessage('Password field is required'),
-
 ]
 
 module.exports = { reg_validation, log_validation };
