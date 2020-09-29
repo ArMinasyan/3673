@@ -5,7 +5,7 @@ let { validationResult } = require('express-validator');
 
 module.exports = (req, res) => {
     let valid = validationResult(req);
-    if (!valid.isEmpty()) res.send(valid.errors[0]);
+    if (!valid.isEmpty()) res.send(400, valid.errors[0]).end();
     else {
         user.findOne({ email: req.body.email }, function (err, result) {
             if (result) {
@@ -13,12 +13,12 @@ module.exports = (req, res) => {
                     if (!err && same) {
                         if (result.token == '-') {
                             let token = createToken({ id: result._id, time: Date.now() });
-                            res.json({ "token": token });
-                        } else res.json({ 'msg': "Please, confirm your email for login ", "code": false })
-                    } else res.json({ "msg": "Incorrect email and/or password" });
+                            res.json(200, { "token": token });
+                        } else res.json(400, { 'msg': "Please, confirm your email for login ", "code": false })
+                    } else res.json(400, { "msg": "Incorrect email and/or password" });
                 })
 
-            } else res.json({ "msg": "Incorrect email and/or password" });
+            } else res.json(400, { "msg": "Incorrect email and/or password" });
         })
     }
 }

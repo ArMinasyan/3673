@@ -7,10 +7,10 @@ let { validationResult } = require('express-validator');
 
 module.exports = (req, res) => {
     let valid = validationResult(req);
-    if (!valid.isEmpty()) res.send(valid.errors[0]);
+    if (!valid.isEmpty()) res.send(400, valid.errors[0]).end();
     else {
         user.findOne({ email: req.body.email }, function (err, result) {
-            if (result) res.json({ "msg": "Username already exist" }); else {
+            if (result) res.json(400, { "msg": "Username already exist" }).end(); else {
                 let token = random.int(100000, 999999).toString();
                 let User = new user({
                     email: req.body.email,
@@ -19,11 +19,11 @@ module.exports = (req, res) => {
                 });
                 User.save(async function (err, doc) {
                     if (!err && doc) {
-                        if (err) res.status(501).end('Try again'); else {
+                        if (err) res.send(500, 'Try again').end(); else {
                             result = await send(req.body.email, token);
                         }
-                        if (!err && result === true) res.status(200).json({ msg: 'Please, check your email, for complete your registration' }).end();
-                        else res.send('Try again').end();
+                        if (!err && result === true) res.json(200, { msg: 'Please, check your email, for complete your registration' }).end();
+                        else res.send(500, 'Try again').end();
                     }
                 })
             }
