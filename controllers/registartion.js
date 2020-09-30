@@ -10,7 +10,7 @@ module.exports = (req, res) => {
     if (!valid.isEmpty()) res.send(400, valid.errors[0]).end();
     else {
         user.findOne({ email: req.body.email }, function (err, result) {
-            if (result) res.json(400, { "msg": "Username already exist" }).end(); else {
+            if (result) res.json(400, { "msg": "Email already exist" }).end(); else {
                 let token = random.int(100000, 999999).toString();
                 let User = new user({
                     email: req.body.email,
