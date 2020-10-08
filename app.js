@@ -1,20 +1,20 @@
 
 
-let express = require('express'),
+const express = require('express'),
     bodyparser = require('body-parser'),
     cookieparser = require('cookie-parser'),
     cors = require('cors'),
     path = require('path'),
     mongoose = require('mongoose');
 
-let app = express();
+const app = express();
 
 
 app.use(bodyparser.urlencoded({ extended: true }));
 app.use(bodyparser.json());
 app.use(cookieparser());
 
-// let config;
+// const config;
 // if (process.env.NODE_ENV.trim() == 'development') {
 //     config = require('./config.json').development;
 // } else config = require('./config.json').production
@@ -33,7 +33,7 @@ async function Start() {
             useUnifiedTopology: true,
         });
 
-    let Email_Social_SignIn = require('./routes/Email_Social_SignIn'),
+    const Email_Social_SignIn = require('./routes/Email_Social_SignIn'),
         SignUp_Confirmation = require('./routes/SignUp_Confirmation');
 
     app.use('/api', [Email_Social_SignIn, SignUp_Confirmation]);

@@ -1,9 +1,9 @@
-let route = require('express').Router();
-let valid = require('../config/validation');
+const route = require('express').Router();
+const valid = require('../utils/validation');
 
 //Controllers
-let emailAuth = require('../controllers/emailAuth');
-let facebookAuth = require('../controllers/facebookAuth');
+const emailAuth = require('../controllers/emailAuth');
+const facebookAuth = require('../controllers/facebookAuth');
 
 //Sub Routes
 route.post('/auth/email', [valid.log_validation], emailAuth);
