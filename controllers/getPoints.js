@@ -12,7 +12,7 @@ module.exports = (req, res, next) => {
             })
             UserData.updateMany({ user_id: res.locals.id },
                 { $addToSet: { data: multiple } }).then(doc => {
-                    res.status(200).send('Data Inserted');
+                    res.status(200).send(multiple);
                 })
         }
     })

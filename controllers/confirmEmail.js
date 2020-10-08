@@ -1,6 +1,5 @@
 const { validationResult } = require('express-validator');
 const user_code = require('../models/user_code');
-const bcrypt = require('bcrypt');
 const createToken = require('../utils/createToken');
 
 module.exports = (req, res) => {
