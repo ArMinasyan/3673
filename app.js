@@ -5,8 +5,8 @@ const express = require('express'),
     cookieparser = require('cookie-parser'),
     cors = require('cors'),
     path = require('path'),
-    mongoose = require('mongoose');
-
+    mongoose = require('mongoose'),
+    dotenv = require('dotenv');
 const app = express();
 
 
@@ -14,12 +14,16 @@ app.use(bodyparser.urlencoded({ extended: true }));
 app.use(bodyparser.json());
 app.use(cookieparser());
 
+dotenv.config();
+
+
 let db;
 if (process.env.NODE_ENV.trim() == 'development') {
     db = 'mongodb://localhost:27017/3673';
 } else db = `mongodb+srv://${process.env.MONGODB_USERNAME}:${process.env.MONGODB_USERNAME}@cluster0.lwgpy.mongodb.net/3673`
 
-require('dotenv').config();
+
+
 
 
 app.use(cors({
