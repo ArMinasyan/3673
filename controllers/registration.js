@@ -1,6 +1,7 @@
 const bcrypt = require('bcrypt');
 const user = require('../models/user');
 const UserData = require('../models/user_data');
+const UserCode = require('../models/user_code');
 const send = require('../utils/SendEmail');
 const random = require('random');
 const { validationResult } = require('express-validator');
@@ -16,11 +17,13 @@ module.exports = (req, res) => {
                 const User = new user({
                     email: req.body.email,
                     password: bcrypt.hashSync(req.body.password, 10),
-                    token: token
+
                 });
                 User.save(async function (err, doc) {
                     if (!err && doc) {
                         if (err) res.send(500, 'Try again').end(); else {
+                            const user_code = new UserCode({ user_email: doc.email, code: token });
+                            user_code.save();
                             const user_data = new UserData({ user_id: doc._id });
                             user_data.save();
                             result = await send(req.body.email, token);
