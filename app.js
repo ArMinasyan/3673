@@ -14,10 +14,10 @@ app.use(bodyparser.urlencoded({ extended: true }));
 app.use(bodyparser.json());
 app.use(cookieparser());
 
-// const config;
-// if (process.env.NODE_ENV.trim() == 'development') {
-//     config = require('./config.json').development;
-// } else config = require('./config.json').production
+let db;
+if (process.env.NODE_ENV.trim() == 'development') {
+    db = 'mongodb://localhost:27017/3673';
+} else db = `mongodb+srv://${process.env.MONGODB_USERNAME}:${process.env.MONGODB_USERNAME}@cluster0.lwgpy.mongodb.net/3673`
 
 require('dotenv').config();
 
@@ -28,7 +28,7 @@ app.use(cors({
 
 
 async function Start() {
-       await mongoose.connect(process.env.MONGODB_URL, {
+    await mongoose.connect(db, {
             useNewUrlParser: true,
             useUnifiedTopology: true,
         });

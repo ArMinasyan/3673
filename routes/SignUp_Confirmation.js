@@ -3,7 +3,7 @@ const validation = require('../utils/validation');
 const defender = require('../utils/defender');
 
 //Controllers
-const registration = require('../controllers/registartion');
+const registration = require('../controllers/registration');
 const confirm = require('../controllers/confirmEmail');
 const changePassword = require('../controllers/changePassword');
 const getPoints = require('../controllers/getPoints');
