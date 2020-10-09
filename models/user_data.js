@@ -5,5 +5,5 @@ module.exports = model('user_data', new Schema({
         type: Types.ObjectId,
         ref: 'user'
     },
-    data: Types.Array([])
+    data: Types.Array()
 }))
