@@ -19,7 +19,7 @@ module.exports = (req, res, next) => {
                         }
                     }
                 }).then(doc => {
-                    res.status(200).send(multiple);
+                    if (doc) res.status(200).send(multiple);
                 })
         }
     })
