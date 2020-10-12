@@ -2,11 +2,10 @@ const getData = arr => {
     let new_arr = [];
     arr.forEach(elem => {
         new_arr.push({
-            sign: elem.sign,
-            distance: elem.distance,
-            time: elem.time,
-            street_name: elem.street_name,
-            text: elem.text
+            distance: elem.distance.text,
+            duration: elem.duration.text,
+            start: [elem.start_location.lat, elem.start_location.lng],
+            end: [elem.end_location.lat, elem.end_location.lng]
         })
     });
 

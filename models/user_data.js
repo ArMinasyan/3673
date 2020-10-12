@@ -5,5 +5,6 @@ module.exports = model('user_data', new Schema({
         type: Types.ObjectId,
         ref: 'user'
     },
+    date: Date,
     data: [{}],
 }))
