@@ -19,7 +19,8 @@ module.exports = (req, res, next) => {
                         }
                     }
                 }).then(doc => {
-                    if (doc) res.status(200).send(multiple);
+
+                    if (doc.nModified !== 0) res.status(200).send(multiple); else res.send(null);
                 })
         }
     })
