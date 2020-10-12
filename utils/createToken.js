@@ -2,5 +2,5 @@ const jwt = require('jsonwebtoken');
 const fs = require('fs');
 
 module.exports = (data) => {
-    return jwt.sign(data, fs.readFileSync('./keys/Private.key'), { algorithm: "RS512" });
+    return jwt.sign(data, process.env.JWT_KEY, { algorithm: "HS512" });
 }
