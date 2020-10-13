@@ -11,17 +11,17 @@ module.exports = (req, res, next) => {
                 multiple.push(getData(elem.steps))
             })
 
-            UserData.updateMany({ user_id: res.locals.id },
-                {
-                    $addToSet: {
-                        data: {
-                            date: moment().format('DD/MM/YYYY'),
-                            routes: multiple
-                        }
-                    }
-                }).then(doc => {
-                    res.status(200).send(multiple);
-                })
-        }
+        //     UserData.updateMany({ user_id: res.locals.id },
+        //         {
+        //             $addToSet: {
+        //                 data: {
+        //                     date: moment().format('DD/MM/YYYY'),
+        //                     routes: multiple
+        //                 }
+        //             }
+        //         }).then(doc => {
+        //             res.status(200).send(multiple);
+        //         })
+         }
     })
 }

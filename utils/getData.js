@@ -1,4 +1,4 @@
-const getData = arr => {
+module.exports = arr => {
     let new_arr = [];
     arr.forEach(elem => {
         new_arr.push({
@@ -11,5 +11,3 @@ const getData = arr => {
 
     return new_arr
 }
-
-module.exports = getData;

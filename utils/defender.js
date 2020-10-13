@@ -1,5 +1,4 @@
 const jwt = require('jsonwebtoken');
-const fs = require('fs');
 
 const defender = (req, res, next) => {
     if (req.headers.authorization && req.headers.authorization.split(' ')[0] === 'Bearer') {

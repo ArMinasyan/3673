@@ -13,5 +13,5 @@ route.post('/auth/registration', validation.reg_validation, registration);
 route.post('/auth/confirm', validation.confirm_validation, confirm);
 
 route.put('/user/changePassword', [validation.change_password, defender], changePassword);
-route.post('/user/getPoints/:data', defender, getPoints);
+route.get('/user/getPoints/:data', defender, getPoints);
 module.exports = route;
