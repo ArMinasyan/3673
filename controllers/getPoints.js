@@ -4,13 +4,14 @@ const UserData = require('../models/user_data');
 const moment = require('moment');
 
 module.exports = (req, res, next) => {
-    axios.get(`https://everyonetest-route-planner.azurewebsites.net/api/plan/route?${req.params.data}`).then(result => {
+    axios.get(`https://everyonetest-route-planner.azurewebsites.net/api/plan/route?${req.params.data}`).then(async result => {
         if (result.data.routes.length == 0) res.status(200).send('There are not routes'); else {
             let multiple = [];
-            result.data.routes[0].legs.forEach(elem => {
+            await result.data.routes[0].legs.forEach(elem => {
                 multiple.push(getData(elem.steps))
             })
 
+            res.status(200).send(multiple)
         //     UserData.updateMany({ user_id: res.locals.id },
         //         {
         //             $addToSet: {
