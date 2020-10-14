@@ -20,9 +20,8 @@ dotenv.config();
 
 
 let db;
-if (process.env.NODE_ENV.trim() == 'development') {
-    db = 'mongodb://localhost:27017/3673';
-} else db = `mongodb+srv://${process.env.MONGODB_USERNAME}:${process.env.MONGODB_PASSWORD}@cluster0.lwgpy.mongodb.net/3673`
+if (process.env.NODE_ENV.trim() == 'development') db = 'mongodb://localhost:27017/3673';
+else db = `mongodb+srv://${process.env.MONGODB_USERNAME}:${process.env.MONGODB_PASSWORD}@cluster0.lwgpy.mongodb.net/3673`
 
 
 
@@ -35,15 +34,14 @@ app.use(cors({
 
 async function Start() {
     await mongoose.connect(db, {
-            useNewUrlParser: true,
-        useUnifiedTopology: true,
-        useFindAndModify: false
+        useNewUrlParser: true, useUnifiedTopology: true,
+        useFindAndModify: false, useCreateIndex: true
         });
 
     const Email_Social_SignIn = require('./routes/Email_Social_SignIn'),
-        SignUp_Confirmation = require('./routes/SignUp_Confirmation');
+        SignUp_Confirmation_User = require('./routes/SignUp_Confirmation_User');
 
-    app.use('/api', [Email_Social_SignIn, SignUp_Confirmation]);
+    app.use('/api', [Email_Social_SignIn, SignUp_Confirmation_User]);
 
     app.listen(process.env.PORT || 8000, function () {
         console.log('Start...');

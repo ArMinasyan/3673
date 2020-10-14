@@ -23,7 +23,7 @@ module.exports = (req, res) => {
                 User.save(async function (err, doc) {
                     if (!err && doc) {
                         if (err) res.status(500).send('Try again').end(); else {
-                            const user_code = new UserCode({ user_email: doc.email, code: token });
+                            const user_code = new UserCode({ user_email: doc.email, code: token, user_id: doc._id });
                             user_code.save();
                             const user_data = new UserData({ user_id: doc._id });
                             user_data.save();

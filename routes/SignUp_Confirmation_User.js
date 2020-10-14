@@ -7,11 +7,14 @@ const registration = require('../controllers/registration');
 const confirm = require('../controllers/confirmEmail');
 const changePassword = require('../controllers/changePassword');
 const getPoints = require('../controllers/getPoints');
+const deleteAccount = require('../controllers/deleteAccount');
 
 //Sub Routes
 route.post('/auth/registration', validation.reg_validation, registration);
 route.post('/auth/confirm', validation.confirm_validation, confirm);
 
 route.put('/user/changePassword', [validation.change_password, defender], changePassword);
+route.delete('/user/deleteAccount', defender, deleteAccount);
+
 route.get('/user/getPoints/:data', defender, getPoints);
 module.exports = route;
