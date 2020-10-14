@@ -24,8 +24,9 @@ const send_mail = mailer.createTransport({
 const send = async (to, token) => {
     return new Promise((res, rej) => {
         send_mail.sendMail({
-            from: process.env.EMAIL,
+            from: 'info@everyonetest.com',
             to: to,
+            sender: 'info@everyonetest.com',
             html:
                 '<p style="font-size: 16px; text-align: center;">Hi, dear user</p>' +
                 '<p style="font-size: 16px; text-align: center;">This is your account confirmation code&nbsp;</p>' +

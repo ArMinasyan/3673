@@ -14,6 +14,8 @@ app.use(bodyparser.urlencoded({ extended: true }));
 app.use(bodyparser.json());
 app.use(cookieparser());
 
+
+
 dotenv.config();
 
 
@@ -34,7 +36,8 @@ app.use(cors({
 async function Start() {
     await mongoose.connect(db, {
             useNewUrlParser: true,
-            useUnifiedTopology: true,
+        useUnifiedTopology: true,
+        useFindAndModify: false
         });
 
     const Email_Social_SignIn = require('./routes/Email_Social_SignIn'),
