@@ -4,14 +4,8 @@ module.exports = arr => {
         new_arr.push({
             distance: elem.distance.text,
             duration: elem.duration.text,
-            start: {
-                latitude: parseFloat(elem.start_location.lat),
-                longitude: parseFloat(elem.start_location.lng)
-            },
-            end: {
-                latitude: parseFloat(elem.end_location.lat),
-                longitude: parseFloat(elem.end_location.lng)
-            }
+            start: [elem.start_location.lat, elem.start_location.lng],
+            end: [elem.end_location.lat, elem.end_location.lng]
         })
     });
 

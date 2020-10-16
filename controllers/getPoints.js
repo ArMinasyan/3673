@@ -11,21 +11,23 @@ module.exports = (req, res, next) => {
             await result.data.routes[0].legs.forEach(elem => {
                 multiple.push(getData(elem.steps))
             })
-            let data_temp = {
-                name: req.body.name,
-                date: moment().format('DD/MM/YYYY'),
-                routes: multiple
-            };
+
+            res.status(200).send(multiple);
+            // let data_temp = {
+            //     date: moment().format('DD/MM/YYYY'),
+            //     routes: multiple
+            // };
             //res.status(200).send(multiple)
-            UserData.updateMany({ user_id: res.locals.id },
-                {
-                    $addToSet: {
-                        data: data_temp
-                    }
-                }).then(doc => {
-                    if (doc.nModified !== 0) res.status(200).send(data_temp);
-                    else res.status(304).send('Not Modified');
-                })
-         }
+            //     UserData.updateMany({ user_id: res.locals.id },
+            //         {
+            //             $addToSet: {
+            //                 data: data_temp
+            //             }
+            //         }).then(doc => {
+            //             if (doc.nModified !== 0) res.status(200).send(data_temp);
+            //             else res.status(304).send('Not Modified');
+            //         })
+            //  }
+        }
     })
 }
