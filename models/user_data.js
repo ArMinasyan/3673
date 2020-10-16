@@ -6,5 +6,5 @@ module.exports = model('user_data', new Schema({
         ref: 'user'
     },
     date: Date,
-    data: [{}],
+    history: [{}],
 }))

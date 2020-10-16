@@ -8,6 +8,7 @@ const confirm = require('../controllers/confirmEmail');
 const changePassword = require('../controllers/changePassword');
 const getPoints = require('../controllers/getPoints');
 const deleteAccount = require('../controllers/deleteAccount');
+const insertHistory = require('../controllers/insertHistory');
 
 //Sub Routes
 route.post('/auth/registration', validation.reg_validation, registration);
@@ -17,4 +18,6 @@ route.put('/user/changePassword', [validation.change_password, defender], change
 route.delete('/user/deleteAccount', defender, deleteAccount);
 
 route.get('/user/getPoints/:data', defender, getPoints);
+route.post('/user/insertHistory', defender, insertHistory);
+
 module.exports = route;

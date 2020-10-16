@@ -12,7 +12,7 @@ module.exports = (req, res, next) => {
                 multiple.push(getData(elem.steps))
             })
 
-            res.status(200).send(multiple);
+            res.status(200).send(multiple[0]);
             // let data_temp = {
             //     date: moment().format('DD/MM/YYYY'),
             //     routes: multiple
