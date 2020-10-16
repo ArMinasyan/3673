@@ -21,7 +21,7 @@ dotenv.config();
 
 let db;
 if (process.env.NODE_ENV.trim() == 'development') db = 'mongodb://localhost:27017/3673';
-else db = `mongodb+srv://${process.env.MONGODB_USERNAME}:${process.env.MONGODB_PASSWORD}@cluster0.lwgpy.mongodb.net/3673`
+else db = process.env.MONGODB
 
 
 
