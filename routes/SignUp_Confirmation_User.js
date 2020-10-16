@@ -10,6 +10,7 @@ const getPoints = require('../controllers/getPoints');
 const deleteAccount = require('../controllers/deleteAccount');
 const insertHistory = require('../controllers/insertHistory');
 const getHistory = require('../controllers/getHistory');
+
 //Sub Routes
 route.post('/auth/registration', validation.reg_validation, registration);
 route.post('/auth/confirm', validation.confirm_validation, confirm);

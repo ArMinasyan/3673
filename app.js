@@ -3,7 +3,6 @@
 const express = require('express'),
     bodyparser = require('body-parser'),
     cookieparser = require('cookie-parser'),
-    cors = require('cors'),
     path = require('path'),
     mongoose = require('mongoose'),
     dotenv = require('dotenv');
@@ -24,12 +23,6 @@ if (process.env.NODE_ENV.trim() == 'development') db = 'mongodb://localhost:2701
 else db = process.env.MONGODB
 
 
-
-
-
-app.use(cors({
-    origin: []
-}))
 
 
 async function Start() {

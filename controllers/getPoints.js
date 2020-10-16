@@ -1,6 +1,5 @@
 const axios = require('axios').default;
 const getData = require('../utils/getData');
-const UserData = require('../models/user_data');
 
 module.exports = (req, res, next) => {
 
@@ -12,21 +11,6 @@ module.exports = (req, res, next) => {
             })
 
             res.status(200).send(multiple[0]);
-            // let data_temp = {
-            //     date: moment().format('DD/MM/YYYY'),
-            //     routes: multiple
-            // };
-            //res.status(200).send(multiple)
-            //     UserData.updateMany({ user_id: res.locals.id },
-            //         {
-            //             $addToSet: {
-            //                 data: data_temp
-            //             }
-            //         }).then(doc => {
-            //             if (doc.nModified !== 0) res.status(200).send(data_temp);
-            //             else res.status(304).send('Not Modified');
-            //         })
-            //  }
         }
     })
 }
